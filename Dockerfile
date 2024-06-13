@@ -21,7 +21,7 @@ RUN add-apt-repository ppa:flexiondotorg/nvtop && \
     apt-get update -y && \
     apt-get install -y nvtop
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g configurable-http-proxy
 
@@ -40,7 +40,7 @@ RUN pip3 install jupyterhub && \
     pip3 install torch torchvision torchaudio && \
     pip3 install nbgrader
 
-RUN jupyter lab build
+RUN jupyter lab build --dev-build=False --minimize=False
 
 RUN useradd -m admin && echo admin:change.it! | chpasswd
 
